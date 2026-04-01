@@ -3,7 +3,6 @@ name: Build Windows EXE and Release
 on:
   push:
     branches: [ main ]
-  # Run release only when you tag a version, e.g. v1.0.0
   workflow_dispatch:
 
 jobs:
@@ -14,10 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup .NET 6
+      - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 8.0.x
 
       - name: Restore dependencies
         run: dotnet restore
@@ -29,7 +28,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Release-artifacts
-          path: ./bin/Release/net6.0-windows/win-x64/publish/**/*.exe
+          path: |
+            ./bin/Release/net8.0-windows/win-x64/publish/**
 
       - name: Create GitHub Release
         id: create_release
@@ -50,6 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./bin/Release/net6.0-windows/win-x64/publish/AlgeriaMobileRechargeDesktop.exe
+          asset_path: ./bin/Release/net8.0-windows/win-x64/publish/AlgeriaMobileRechargeDesktop.exe
           asset_name: AlgeriaMobileRechargeDesktop.exe
           asset_content_type: application/x-msdownload
