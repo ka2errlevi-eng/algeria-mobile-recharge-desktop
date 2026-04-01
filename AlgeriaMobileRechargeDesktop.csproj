@@ -2,20 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <LangVersion>10</LangVersion>
     <Platforms>AnyCPU</Platforms>
+    <SelfContained>false</SelfContained>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-  </PropertyGroup>
+  <ItemGroup>
+    <!-- For SerialPort -->
+    <PackageReference Include="System.IO.Ports" Version="8.0.*" />
+  </ItemGroup>
 
 </Project>
