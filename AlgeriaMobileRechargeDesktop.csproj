@@ -6,11 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU</Platforms>
-    <SelfContained>false</SelfContained>
+    <!-- Add this line: -->
+    <SelfContained>true</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- For SerialPort -->
     <PackageReference Include="System.IO.Ports" Version="8.0.*" />
   </ItemGroup>
 
